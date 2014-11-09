@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://benjaminconant.github.io/"/>
-  <updated>2014-11-09T04:50:17.577Z</updated>
+  <updated>2014-11-09T04:51:48.463Z</updated>
   <id>http://benjaminconant.github.io/</id>
   
   <author>
@@ -16,10 +16,10 @@
   
   <entry>
     <title><![CDATA[Hello Internet!]]></title>
-    <link href="http://benjaminconant.github.io/2014/10/23/Why-Development/"/>
-    <id>http://benjaminconant.github.io/2014/10/23/Why-Development/</id>
-    <published>2014-10-23T19:01:47.000Z</published>
-    <updated>2014-11-09T04:50:05.000Z</updated>
+    <link href="http://benjaminconant.github.io/2014/11/08/Why-Development/"/>
+    <id>http://benjaminconant.github.io/2014/11/08/Why-Development/</id>
+    <published>2014-11-08T20:01:47.000Z</published>
+    <updated>2014-11-09T04:51:41.000Z</updated>
     <content type="html"><![CDATA[<p>I love programing because it is creative, because it is challenging, and because it gives you the power to concretize.</p>
 <p>What follows are my (hopefully) helpful musings on different web technologies, implementations, and anything else I come across or create that seems interesting enough to warrant being written about. </p>
 ]]></content>

@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://benjaminconant.github.io/"/>
-  <updated>2014-11-09T04:54:10.551Z</updated>
+  <updated>2014-11-13T22:19:06.337Z</updated>
   <id>http://benjaminconant.github.io/</id>
   
   <author>
@@ -15,17 +15,17 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Hello and welcome, internet user!]]></title>
+    <title><![CDATA[Hello internet user!]]></title>
     <link href="http://benjaminconant.github.io/2014/11/08/Why-Development/"/>
     <id>http://benjaminconant.github.io/2014/11/08/Why-Development/</id>
     <published>2014-11-08T20:01:47.000Z</published>
-    <updated>2014-11-09T04:54:02.000Z</updated>
-    <content type="html"><![CDATA[<p>I love programing because it is creative, because it is challenging, and because it gives you the power to concretize.</p>
+    <updated>2014-11-13T22:18:58.000Z</updated>
+    <content type="html"><![CDATA[<p>I love programing because it because it gives you the power to concretize.</p>
 <p>What follows are my (hopefully) helpful musings on different web technologies, implementations, and anything else I come across or create that seems interesting enough to warrant being written about. </p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>I love programing because it is creative, because it is challenging, and because it gives you the power to concretize.</p>
-<p>What follow]]>
+    <![CDATA[<p>I love programing because it because it gives you the power to concretize.</p>
+<p>What follows are my (hopefully) helpful musings on diff]]>
     </summary>
     
   </entry>

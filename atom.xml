@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://benjaminconant.github.io/"/>
-  <updated>2014-11-17T00:27:01.049Z</updated>
+  <updated>2014-11-17T02:13:12.591Z</updated>
   <id>http://benjaminconant.github.io/</id>
   
   <author>
@@ -35,7 +35,7 @@
     <link href="http://benjaminconant.github.io/2014/11/13/Working-with-the-New-York-Times-Guardian-and-Wikipedia-APIs/"/>
     <id>http://benjaminconant.github.io/2014/11/13/Working-with-the-New-York-Times-Guardian-and-Wikipedia-APIs/</id>
     <published>2014-11-13T22:23:44.000Z</published>
-    <updated>2014-11-17T00:26:34.000Z</updated>
+    <updated>2014-11-17T02:12:04.000Z</updated>
     <content type="html"><![CDATA[<p>APIs are a hot topic for developers and entrepreneurs alike. An API is a way for different applications to communicate with each other by sending and receiving information. For example, your company may want to have a live feed of all tweets about itself displayed on its website. The way to access these tweets is to ask Twitter’s API for the relevant information. Twitter’s API will then send back the information your company wants and the code on your company’s website can display that information.</p>
 <p>I recently had an idea for a web application that would return relevant search results by asking the APIs of various trusted news sources for any articles they had on the topic. Before beginning development, I scoured the internet for tutorials on how to use the three APIs I wanted use — <a href="http://developer.nytimes.com/docs" target="_blank" rel="external">The New York Times API</a>, <a href="http://www.theguardian.com/open-platform/content-api-content-search-reference-guide" target="_blank" rel="external">The Guardian API</a>, and the <a href="http://www.mediawiki.org/wiki/API:Main_page" target="_blank" rel="external">The MediaWiki API</a>. I did not find anything that showed me exactly how to implement what I wanted to do so now, after finishing my application, I am writing a quick tutorial that should get you up and running with these three free news APIs. </p>
 <p>In the first section, I will throw up my HTML, CSS, and JavaScript code so that developers can read it and take from it the parts they need. In the second section, I will highlight the parts of the code that are most relevant to querying the three APIs my application communicates with and explain how they work. My hope is that this post will help anyone comfortable with HTML, CSS, jQuery, and JavaScript make the leap into working with APIs. For anyone interested in working with APIs but unfamiliar with the aforementioned technologies you can click the following links to some great resources for learning them — <a href="http://www.codecademy.com/en/tracks/web" target="_blank" rel="external">HTML & CSS</a>, <a href="http://www.codecademy.com/en/tracks/jquery" target="_blank" rel="external">jQuery</a>, <a href="http://www.codecademy.com/en/tracks/javascript" target="_blank" rel="external">JavaScript</a>. If you want all the code you can clone my project’s <a href="https://github.com/BenjaminConant/anchorbase" target="_blank" rel="external">GitHub repository</a> and if you want to see the site in action you can check out the <a href="http://benjaminconant.github.io/anchorbase/" target="_blank" rel="external">live site</a>. </p>

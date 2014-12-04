@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://learn.fullstackacademy.com/#/course_sessions/82/concepts/290 -->
+<html class="no-js ng-scope" ng-app="frontendApp" ng-controller="TitleCtrl"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style><meta charset="utf-8"><title ng-bind-template="Concept: Layouts and the Add Page, Page - Fullstack Academy" class="ng-binding">Concept: Layouts and the Add Page, Page - Fullstack Academy</title><meta name="description" content=""><meta name="viewport" content="width=device-width"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="http://learn.fullstackacademy.com/styles/585b8436.vendor.css"><link rel="stylesheet" href="http://learn.fullstackacademy.com/styles/f2427777.main.css"><link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"><style type="text/css"></style><style id="ace_editor">.ace_editor {position: relative;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;line-height: normal;direction: ltr;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: text;min-width: 100%;}.ace_dragging, .ace_dragging * {cursor: move !important;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;}.ace_text-input.ace_composition {background: #f8f8f8;color: #111;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0px;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity 0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;display: block;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition: opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease 0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition: opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head><body class="navbar-fixed skin-1"><!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--><!-- Add your site or application content here --><!-- uiView:  --><div class="main-container ng-scope" id="main-container" ui-view=""><div ng-controller="MainCtrl" class="ng-scope">
+<!-- ngInclude: undefined --><ng-include src="&#39;views/shared/topbar.html&#39;" class="ng-scope"><div class="navbar navbar-default navbar-fixed-top ng-scope" id="navbar" ng-controller="TopbarCtrl as topbar">
+
+  <div class="navbar-container" id="navbar-container">
+
+  <div class="navbar-header pull-left">
+    <a href="http://learn.fullstackacademy.com/#" class="navbar-brand">
+    <small>
+      <i class="fa fa-heart"></i>
+      Fullstack Academy
+    </small>
+    </a><!-- /.brand -->
+  </div><!-- /.navbar-header -->
+
+  <div class="navbar-header pull-right" role="navigation">
+    <ul class="nav ace-nav">
+      <!-- in the topbar part of usermenu files for Ace -->
+      <!-- ngInclude: undefined --><li class="ng-scope"><a ui-sref="learn.help_ticket" href="http://learn.fullstackacademy.com/#/help_tickets">Queue</a></li><li class="ng-scope"><a href="" ng-click="getHelp()">Get Help</a></li><li class="light-blue ng-scope">
+  <a data-toggle="dropdown" class="dropdown-toggle">
+    <!-- <img class="nav-user-photo" src="{{path.assets}}/avatars/user.jpg" alt="Jason's Photo"> -->
+    <div class="user-info ng-binding" style="padding: 0px 10px;">
+      <small>Welcome, </small> Benjamin
+    </div>
+    <i class="fa fa-caret-down"></i>
+  </a>
+  <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+    <!-- <li><a href="#"><i class="icon-cog"></i> Settings</a></li> -->
+    <!-- ngIf: user.isAdmin() -->
+    <li class="divider"></li>
+    <li><a href="http://learn.fullstackacademy.com/users/sign_out"><i class="fa fa-off"></i> Logout</a></li>
+  </ul>
+</li>
+
+    </ul><!-- /.ace-nav -->
+  </div><!-- /.navbar-header -->
+
+  </div><!-- /.container -->
+
+</div></ng-include>
+
+<!-- ngInclude: undefined --><ng-include src="&#39;views/shared/sidebar.html&#39;" class="ng-scope"><div class="sidebar ng-scope" id="sidebar" ng-controller="SidebarCtrl as sidebar">
+  <!-- course sessions -->
+  <ul class="nav nav-list">
+    <!-- ngRepeat: course_session in course_sessions --><li ng-repeat="course_session in course_sessions" class="sidebar_item ng-scope" ng-class="{ active: course_session.active, 
+                    open: sidebar.hasActiveChild(course_session.sections)}" ng-click="sidebar.toggle($event, course_session)">
+      <!-- course session listing -->
+      <a ng-class="{&#39;dropdown-toggle&#39;: course_session.sections.length &gt; 0}" class="dropdown-toggle">
+        
+        <!-- ngIf: course_session.icon --><i class="fa fa-book" ng-if="course_session.icon"></i><!-- end ngIf: course_session.icon -->
+        Javascript Fundamentals - Nov 2014
+        <!-- ngIf: course_session.sections.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="course_session.sections.length &gt; 0"></b><!-- end ngIf: course_session.sections.length > 0 -->
+      </a>
+      <!-- end course session listing -->
+
+      <!-- sections -->
+      <!-- ngIf: course_session.sections.length > 0 --><ul ng-if="course_session.sections.length &gt; 0" class="submenu ng-scope">
+        <!-- Course Admin -->
+        <!-- ngIf: user.isAdmin() -->
+
+        <!-- ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Data Structures</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/77/sections/61">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/237">
+                <i class="fa fa-laptop"></i>
+                Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Sorting</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/77/sections/110">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/502">
+                <i class="fa fa-laptop"></i>
+                Goals
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/503">
+                <i class="fa fa-laptop"></i>
+                Bubble Sort
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/504">
+                <i class="fa fa-laptop"></i>
+                Merge Sort
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/505">
+                <i class="fa fa-laptop"></i>
+                Performance
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Project: Game of Life</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/77/sections/63">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/240">
+                <i class="fa fa-laptop"></i>
+                Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/241">
+                <i class="fa fa-laptop"></i>
+                Building Game of Life in JS/HTML  Preview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/242">
+                <i class="fa fa-laptop"></i>
+                Optional: Game of Life 3D  Preview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Exercism</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/77/sections/152">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/77/concepts/666">
+                <i class="fa fa-laptop"></i>
+                Setup
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections -->
+        <!-- end sections --> 
+
+      </ul><!-- end ngIf: course_session.sections.length > 0 -->
+    </li><!-- end ngRepeat: course_session in course_sessions --><li ng-repeat="course_session in course_sessions" class="sidebar_item ng-scope active open" ng-class="{ active: course_session.active, 
+                    open: sidebar.hasActiveChild(course_session.sections)}" ng-click="sidebar.toggle($event, course_session)">
+      <!-- course session listing -->
+      <a ng-class="{&#39;dropdown-toggle&#39;: course_session.sections.length &gt; 0}" class="dropdown-toggle">
+        
+        <!-- ngIf: course_session.icon --><i class="fa fa-book" ng-if="course_session.icon"></i><!-- end ngIf: course_session.icon -->
+        Backend JavaScript - Nov 2014
+        <!-- ngIf: course_session.sections.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="course_session.sections.length &gt; 0"></b><!-- end ngIf: course_session.sections.length > 0 -->
+      </a>
+      <!-- end course session listing -->
+
+      <!-- sections -->
+      <!-- ngIf: course_session.sections.length > 0 --><ul ng-if="course_session.sections.length &gt; 0" class="submenu ng-scope">
+        <!-- Course Admin -->
+        <!-- ngIf: user.isAdmin() -->
+
+        <!-- ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Introduction to Node.js</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/82/sections/68">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/251">
+                <i class="fa fa-laptop"></i>
+                Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/252">
+                <i class="fa fa-laptop"></i>
+                Reading and Watching Files
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/253">
+                <i class="fa fa-laptop"></i>
+                Setting up Express
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/254">
+                <i class="fa fa-laptop"></i>
+                Showing Files on the Web
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/255">
+                <i class="fa fa-laptop"></i>
+                Prettying up our Page
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/256">
+                <i class="fa fa-laptop"></i>
+                Real-time Updates
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Twitter.js (Intro to Express)</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/82/sections/67">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/248">
+                <i class="fa fa-laptop"></i>
+                Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/249">
+                <i class="fa fa-laptop"></i>
+                Node Modules &amp; Class Conventions
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/262">
+                <i class="fa fa-laptop"></i>
+                Writing a Simple Data Store
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/250">
+                <i class="fa fa-laptop"></i>
+                Our In-Memory Data Store: Store.js
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/257">
+                <i class="fa fa-laptop"></i>
+                Controllers and Views
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/261">
+                <i class="fa fa-laptop"></i>
+                Making new Routes
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/260">
+                <i class="fa fa-laptop"></i>
+                Forms in Express
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/274">
+                <i class="fa fa-laptop"></i>
+                Real-time Updates
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">SQL and Databases</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/82/sections/69">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/265">
+                <i class="fa fa-laptop"></i>
+                Setup IMDB DB
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/266">
+                <i class="fa fa-laptop"></i>
+                Querying Data
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/267">
+                <i class="fa fa-laptop"></i>
+                IMDB SQL Exercises
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Functional Query Language</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/82/sections/160">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/714">
+                <i class="fa fa-laptop"></i>
+                Functional Query Language Workshop
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope active open">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Intro to MongoDB with WikiStack</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active" class="">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/82/sections/73">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/288">
+                <i class="fa fa-laptop"></i>
+                Overview and Setup
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/289">
+                <i class="fa fa-laptop"></i>
+                Starting WikiStack
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope active">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="./about_us_files/about_us.html">
+                <i class="fa fa-laptop"></i>
+                Layouts and the Add Page, Page
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/291">
+                <i class="fa fa-laptop"></i>
+                StackWiki Home Page
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/292">
+                <i class="fa fa-laptop"></i>
+                Markdown Support
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/293">
+                <i class="fa fa-laptop"></i>
+                Student Project
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope active open">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Rockin' Regular Expressions</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active" class="">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/82/sections/113">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/517">
+                <i class="fa fa-laptop"></i>
+                Exercises
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Twitter.sql</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/82/sections/157">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/679">
+                <i class="fa fa-laptop"></i>
+                Intro
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/680">
+                <i class="fa fa-laptop"></i>
+                Installing MySQL
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/681">
+                <i class="fa fa-laptop"></i>
+                Setting up the database
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/682">
+                <i class="fa fa-laptop"></i>
+                Populating the data
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/683">
+                <i class="fa fa-laptop"></i>
+                Setting up the ORM
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/684">
+                <i class="fa fa-laptop"></i>
+                Thinking About Schema Design
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections -->
+        <!-- end sections --> 
+
+      </ul><!-- end ngIf: course_session.sections.length > 0 -->
+    </li><!-- end ngRepeat: course_session in course_sessions --><li ng-repeat="course_session in course_sessions" class="sidebar_item ng-scope" ng-class="{ active: course_session.active, 
+                    open: sidebar.hasActiveChild(course_session.sections)}" ng-click="sidebar.toggle($event, course_session)">
+      <!-- course session listing -->
+      <a ng-class="{&#39;dropdown-toggle&#39;: course_session.sections.length &gt; 0}" class="dropdown-toggle">
+        
+        <!-- ngIf: course_session.icon --><i class="fa fa-book" ng-if="course_session.icon"></i><!-- end ngIf: course_session.icon -->
+        Frontend Development - Nov 2014
+        <!-- ngIf: course_session.sections.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="course_session.sections.length &gt; 0"></b><!-- end ngIf: course_session.sections.length > 0 -->
+      </a>
+      <!-- end course session listing -->
+
+      <!-- sections -->
+      <!-- ngIf: course_session.sections.length > 0 --><ul ng-if="course_session.sections.length &gt; 0" class="submenu ng-scope">
+        <!-- Course Admin -->
+        <!-- ngIf: user.isAdmin() -->
+
+        <!-- ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Building Selector.js</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/78/sections/108">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/78/concepts/497">
+                <i class="fa fa-laptop"></i>
+                Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/78/concepts/498">
+                <i class="fa fa-laptop"></i>
+                Setting Up
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/78/concepts/499">
+                <i class="fa fa-laptop"></i>
+                Building Selector.js
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/78/concepts/500">
+                <i class="fa fa-laptop"></i>
+                Goals
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections -->
+        <!-- end sections --> 
+
+      </ul><!-- end ngIf: course_session.sections.length > 0 -->
+    </li><!-- end ngRepeat: course_session in course_sessions --><li ng-repeat="course_session in course_sessions" class="sidebar_item ng-scope" ng-class="{ active: course_session.active, 
+                    open: sidebar.hasActiveChild(course_session.sections)}" ng-click="sidebar.toggle($event, course_session)">
+      <!-- course session listing -->
+      <a ng-class="{&#39;dropdown-toggle&#39;: course_session.sections.length &gt; 0}" class="dropdown-toggle">
+        
+        <!-- ngIf: course_session.icon --><i class="fa fa-book" ng-if="course_session.icon"></i><!-- end ngIf: course_session.icon -->
+        Fullstack Foundations - Nov14
+        <!-- ngIf: course_session.sections.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="course_session.sections.length &gt; 0"></b><!-- end ngIf: course_session.sections.length > 0 -->
+      </a>
+      <!-- end course session listing -->
+
+      <!-- sections -->
+      <!-- ngIf: course_session.sections.length > 0 --><ul ng-if="course_session.sections.length &gt; 0" class="submenu ng-scope">
+        <!-- Course Admin -->
+        <!-- ngIf: user.isAdmin() -->
+
+        <!-- ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Fullstack Foundations Overview</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/95">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/446">
+                <i class="fa fa-laptop"></i>
+                Foundations Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/450">
+                <i class="fa fa-laptop"></i>
+                Content Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/459">
+                <i class="fa fa-laptop"></i>
+                Optional Book List
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 1 - TF, Node, Hexo</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/92">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/613">
+                <i class="fa fa-laptop"></i>
+                Intro to the Command Line
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/614">
+                <i class="fa fa-laptop"></i>
+                Intro to VCS and Git
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/441">
+                <i class="fa fa-laptop"></i>
+                TestFirst 0-3
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/440">
+                <i class="fa fa-laptop"></i>
+                Intro To Node
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/685">
+                <i class="fa fa-laptop"></i>
+                Hexo Blog
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/686">
+                <i class="fa fa-laptop"></i>
+                Installing Hexo
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/687">
+                <i class="fa fa-laptop"></i>
+                Setting-Up Github Pages
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/688">
+                <i class="fa fa-laptop"></i>
+                Create A Blog Post
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/689">
+                <i class="fa fa-laptop"></i>
+                Guessing Game Part 1 - HTML/CSS
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 2 - Guessing Game &amp; jQuery</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/93">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/442">
+                <i class="fa fa-laptop"></i>
+                TestFirst 4-6
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/444">
+                <i class="fa fa-laptop"></i>
+                Intro to jQuery
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/690">
+                <i class="fa fa-laptop"></i>
+                Chrome Dev Tools
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/443">
+                <i class="fa fa-laptop"></i>
+                Guessing Game Part 2: JavaScript
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 3 - TF &amp; Prototypes</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/97">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/457">
+                <i class="fa fa-laptop"></i>
+                Finish Guessing Game
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/456">
+                <i class="fa fa-laptop"></i>
+                TestFirst 6-7
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/691">
+                <i class="fa fa-laptop"></i>
+                TestFirst 8
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 4 - Hexo-Mailer &amp; Monty Hall</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/98">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/460">
+                <i class="fa fa-laptop"></i>
+                Hexo-Mailer Intro
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/461">
+                <i class="fa fa-laptop"></i>
+                Hexo-Mailer: Setup
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/692">
+                <i class="fa fa-laptop"></i>
+                Parse CSV Files
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/693">
+                <i class="fa fa-laptop"></i>
+                Email HTML Template
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/695">
+                <i class="fa fa-laptop"></i>
+                EJS - Template Engine
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/694">
+                <i class="fa fa-laptop"></i>
+                Blog Post Links
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/697">
+                <i class="fa fa-laptop"></i>
+                Sending Emails
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/698">
+                <i class="fa fa-laptop"></i>
+                Monty Hall
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Resources</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/134">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/615">
+                <i class="fa fa-laptop"></i>
+                Test First
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Extra Work</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/99">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/465">
+                <i class="fa fa-laptop"></i>
+                Additional Projects
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Command Line Haiku</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/58/sections/138">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/621">
+                <i class="fa fa-laptop"></i>
+                Overview and Objective  Preview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/622">
+                <i class="fa fa-laptop"></i>
+                Haiku Form
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/623">
+                <i class="fa fa-laptop"></i>
+                Parsing A Dictionary File
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/58/concepts/624">
+                <i class="fa fa-laptop"></i>
+                Extra Credit
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections -->
+        <!-- end sections --> 
+
+      </ul><!-- end ngIf: course_session.sections.length > 0 -->
+    </li><!-- end ngRepeat: course_session in course_sessions --><li ng-repeat="course_session in course_sessions" class="sidebar_item ng-scope" ng-class="{ active: course_session.active, 
+                    open: sidebar.hasActiveChild(course_session.sections)}" ng-click="sidebar.toggle($event, course_session)">
+      <!-- course session listing -->
+      <a ng-class="{&#39;dropdown-toggle&#39;: course_session.sections.length &gt; 0}" class="dropdown-toggle">
+        
+        <!-- ngIf: course_session.icon --><i class="fa fa-book" ng-if="course_session.icon"></i><!-- end ngIf: course_session.icon -->
+        Fullstack Foundations - Jan15
+        <!-- ngIf: course_session.sections.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="course_session.sections.length &gt; 0"></b><!-- end ngIf: course_session.sections.length > 0 -->
+      </a>
+      <!-- end course session listing -->
+
+      <!-- sections -->
+      <!-- ngIf: course_session.sections.length > 0 --><ul ng-if="course_session.sections.length &gt; 0" class="submenu ng-scope">
+        <!-- Course Admin -->
+        <!-- ngIf: user.isAdmin() -->
+
+        <!-- ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Fullstack Foundations Overview</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/95">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/446">
+                <i class="fa fa-laptop"></i>
+                Foundations Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/450">
+                <i class="fa fa-laptop"></i>
+                Content Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/459">
+                <i class="fa fa-laptop"></i>
+                Optional Book List
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 1 - TF, Node, Hexo</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/92">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/613">
+                <i class="fa fa-laptop"></i>
+                Intro to the Command Line
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/614">
+                <i class="fa fa-laptop"></i>
+                Intro to VCS and Git
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/441">
+                <i class="fa fa-laptop"></i>
+                TestFirst 0-3
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/440">
+                <i class="fa fa-laptop"></i>
+                Intro To Node
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/685">
+                <i class="fa fa-laptop"></i>
+                Hexo Blog
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/686">
+                <i class="fa fa-laptop"></i>
+                Installing Hexo
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/687">
+                <i class="fa fa-laptop"></i>
+                Setting-Up Github Pages
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/688">
+                <i class="fa fa-laptop"></i>
+                Create A Blog Post
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/689">
+                <i class="fa fa-laptop"></i>
+                Guessing Game Part 1 - HTML/CSS
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 2 - Guessing Game &amp; jQuery</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/93">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/442">
+                <i class="fa fa-laptop"></i>
+                TestFirst 4-6
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/444">
+                <i class="fa fa-laptop"></i>
+                Intro to jQuery
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/690">
+                <i class="fa fa-laptop"></i>
+                Chrome Dev Tools
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/443">
+                <i class="fa fa-laptop"></i>
+                Guessing Game Part 2: JavaScript
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 3 - TF &amp; Prototypes</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/97">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/457">
+                <i class="fa fa-laptop"></i>
+                Finish Guessing Game
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/456">
+                <i class="fa fa-laptop"></i>
+                TestFirst 6-7
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/691">
+                <i class="fa fa-laptop"></i>
+                TestFirst 8
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Part 4 - Hexo-Mailer &amp; Monty Hall</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/98">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/460">
+                <i class="fa fa-laptop"></i>
+                Hexo-Mailer Intro
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/461">
+                <i class="fa fa-laptop"></i>
+                Hexo-Mailer: Setup
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/692">
+                <i class="fa fa-laptop"></i>
+                Parse CSV Files
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/693">
+                <i class="fa fa-laptop"></i>
+                Email HTML Template
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/695">
+                <i class="fa fa-laptop"></i>
+                EJS - Template Engine
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/694">
+                <i class="fa fa-laptop"></i>
+                Blog Post Links
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/697">
+                <i class="fa fa-laptop"></i>
+                Sending Emails
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/698">
+                <i class="fa fa-laptop"></i>
+                Monty Hall
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Resources</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/134">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/615">
+                <i class="fa fa-laptop"></i>
+                Test First
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Extra Work</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/99">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/465">
+                <i class="fa fa-laptop"></i>
+                Additional Projects
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Command Line Haiku</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/59/sections/138">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/621">
+                <i class="fa fa-laptop"></i>
+                Overview and Objective  Preview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/622">
+                <i class="fa fa-laptop"></i>
+                Haiku Form
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/623">
+                <i class="fa fa-laptop"></i>
+                Parsing A Dictionary File
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/59/concepts/624">
+                <i class="fa fa-laptop"></i>
+                Extra Credit
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections -->
+        <!-- end sections --> 
+
+      </ul><!-- end ngIf: course_session.sections.length > 0 -->
+    </li><!-- end ngRepeat: course_session in course_sessions --><li ng-repeat="course_session in course_sessions" class="sidebar_item ng-scope" ng-class="{ active: course_session.active, 
+                    open: sidebar.hasActiveChild(course_session.sections)}" ng-click="sidebar.toggle($event, course_session)">
+      <!-- course session listing -->
+      <a ng-class="{&#39;dropdown-toggle&#39;: course_session.sections.length &gt; 0}" class="dropdown-toggle">
+        
+        <!-- ngIf: course_session.icon --><i class="fa fa-book" ng-if="course_session.icon"></i><!-- end ngIf: course_session.icon -->
+        Course Info 111 - Nov 2014
+        <!-- ngIf: course_session.sections.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="course_session.sections.length &gt; 0"></b><!-- end ngIf: course_session.sections.length > 0 -->
+      </a>
+      <!-- end course session listing -->
+
+      <!-- sections -->
+      <!-- ngIf: course_session.sections.length > 0 --><ul ng-if="course_session.sections.length &gt; 0" class="submenu ng-scope">
+        <!-- Course Admin -->
+        <!-- ngIf: user.isAdmin() -->
+
+        <!-- ngRepeat: section in course_session.sections --><li ng-repeat="section in course_session.sections" ng-class="{active: section.active, open: sidebar.hasActiveChild(section.concepts)}" class="ng-scope">
+          <a href="http://learn.fullstackacademy.com/#" ng-class="{&#39;dropdown-toggle&#39;: section.concepts.length &gt; 0}" ng-click="sidebar.toggle($event, section)" class="dropdown-toggle">
+            <!-- ngIf: section.icon --><i class="fa fa-book" ng-if="section.icon"></i><!-- end ngIf: section.icon -->
+
+            <span class="ng-binding">Course Syllabus</span>
+            <!-- ngIf: section.concepts.length > 0 --><b class="arrow fa fa-angle-down ng-scope" ng-if="section.concepts.length &gt; 0"></b><!-- end ngIf: section.concepts.length > 0 -->
+
+          </a>
+          <!-- ngIf: section.concepts.length > 0 --><ul ng-if="section.concepts.length &gt; 0" class="submenu ng-scope">
+            <!-- section admin link -->
+            <!-- ngIf: user.isAdmin() -->
+
+            <!-- section outline -->
+            <li ui-sref-active="active">
+              <a ui-sref="learn.course_session.section({courseSessionId: course_session.id, sectionId: section.id})" ng-click="$event.stopPropagation()" href="http://learn.fullstackacademy.com/#/course_sessions/80/sections/159">
+                <i class="fa fa-list-ol"></i>
+
+                Section Outline
+              </a>
+            </li>
+            <!-- end section outline -->
+            <!-- concepts -->
+            <!-- ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/80/concepts/710">
+                <i class="fa fa-laptop"></i>
+                Course Overview
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/80/concepts/711">
+                <i class="fa fa-laptop"></i>
+                Pair Programming
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts --><li ui-sref-active="active" ng-repeat="concept in section.concepts" class="ng-scope">
+              <a ui-sref="learn.course_session.concept.view({courseSessionId: course_session.id, conceptId: concept.id})" ng-click="sidebar.toggle($event, concept);$event.stopPropagation()" class="ng-binding" href="http://learn.fullstackacademy.com/#/course_sessions/80/concepts/712">
+                <i class="fa fa-laptop"></i>
+                Calendar
+              </a>
+            </li><!-- end ngRepeat: concept in section.concepts -->
+            <!-- end concepts -->
+          </ul><!-- end ngIf: section.concepts.length > 0 -->
+        </li><!-- end ngRepeat: section in course_session.sections -->
+        <!-- end sections --> 
+
+      </ul><!-- end ngIf: course_session.sections.length > 0 -->
+    </li><!-- end ngRepeat: course_session in course_sessions -->
+  </ul>
+</div></ng-include>
+<!-- ngInclude: undefined --><ng-include src="&#39;views/shared/typenav.html&#39;" class="ng-scope"><div id="typenav" ng-show="show" ng-controller="TypeNavCtrl" class="ng-scope ng-hide">
+  <div class="inner">
+    <input class="form-control ng-pristine ng-valid" placeholder="Search..." ng-model="selectedConcept" typeahead="concept as concept.longTitle for concept in course_sessions.concepts | filter:{longTitle:$viewValue} | limitTo: 10" typeahead-on-select="goToConcept($item)" type="text" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-00F-582"><!-- ngIf: isOpen() -->
+  </div>
+</div></ng-include>
+<!-- right panel -->
+<!-- uiView: undefined --><ui-view class="ng-scope"><!-- uiView: undefined --><ui-view class="ng-scope"><!-- uiView: undefined --><ui-view class="ng-scope"><div class="main-content ng-scope" ng-controller="ConceptCtrl as ctrl">
+  <div id="bug-report" style="top: 1282px; left: 75px; display: block;"><a class="btn" ng-click="openBugReport()"><i class="fa fa-bug"></i></a></div>
+  <div class="page-content">
+    <div class="page-header">
+      <h1 class="ng-binding">
+        Layouts and the Add Page, Page
+        <small class="ng-binding">
+          <!-- ngIf: concept.objective --> 
+        </small>
+      </h1>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+        <div id="concept-body" ng-bind-html="concept.renderedHtml | safe_html" class="ng-binding"><h3>Building the front page</h3><p>The front page of WikiStack should list all of the pages we have in our app and also have a link to create a new page. For this, we will need a couple of things.</p>
+<ul>
+<li>An index.html view</li>
+<li>Define the <code>new page</code> action for our router</li>
+<li>Define the index action in the router to find all the pages</li>
+</ul>
+<p>Let's start by defining our home page at index.html view and also add an Add Page view.</p><h3>Layouts</h3><p>In most websites, many pages share code like menus, footers, etc and it's silly to keep repeating this code for every page that we make. </p><p>Swig has a great feature called "layouts" that will help us with that.</p><p>Create a file called <code>views/layout.html</code> in Sublime and let's get started. Make sure this file is in the <code>views</code> folder.</p><h4>Building the Wiki Layout</h4><p>The great thing about layouts is that they allow you to define sections of the page, called <em>blocks</em>. Blocks are parts of the code that other pages on your site can customize. For example, each new page will want to customize their page title. So let's start our layout.html by adding a block where the title is.</p>
+<div class="code_container">
+<div><div id="highlighter_722861" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml comments">&lt;!-- layout.html --&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;!DOCTYPE html&gt;</code></div><div class="line number3 index2 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">html</code> <code class="xml color1">lang</code><code class="xml plain">=</code><code class="xml string">"en"</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">head</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">title</code><code class="xml plain">&gt;{% block title %}WikiStack{% endblock %}&lt;/</code><code class="xml keyword">title</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"<a href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css</a>"</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"stylesheet"</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">head</code><code class="xml plain">&gt;</code></div><div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">body</code><code class="xml plain">&gt;</code></div><div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;</code><code class="xml plain">{% block content %}{% endblock %}</code></div><div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">body</code><code class="xml plain">&gt;</code></div><div class="line number11 index10 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">html</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div>
+
+<p>We have defined a very bare-bones page above with a css include and two blocks: one in the <code>&lt;title&gt;</code> tag called "title", and one in the body called "content". The text "WikiStack" inside the "title" block is the default text.</p><p>Next, let's see what would happen when we create another page in this site called <code>about_us.html</code> where we would want to use this layout without having to re-write all of this code.</p>
+<div class="code_container">
+<div><div id="highlighter_989808" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml comments">&lt;!-- about_us.html --&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">{% extends "layout.html" %}</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="xml plain">{% block title %}WikiStack - About Us{% endblock %}</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="xml plain">{% block content %}</code></div><div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;We are a cool startup that are making a Node.js wiki that supports Markdown!&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number8 index7 alt1"><code class="xml plain">{% endblock %}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+
+<p>Notice the <code>extends "layout.html"</code> command at the top of the file. This means everything we already defined in layout.html doesn't need to be written again. All we have to do is define the blocks, and our whole page will be ready to go! Cool right?</p><h4>Student Exercise</h4><p>Let's use layouts to create our website. Your goal to create a page that looks like <a href="https://www.dropbox.com/s/vsq44xwzn1sob6c/Screenshot%202014-02-04%2003.02.35.png">this screenshot</a>. You should put all the structural HTML code in a file called <code>layout.html</code>, and create another file called <code>index.html</code> that extends <code>layout.html</code>. </p><div class="bs-callout bs-callout-info"><p>You may want to add blocks for areas like the page heading and page content.</p></div><p>Once we add the "Add Page" page and actually have saved wiki-pages in our DB, you will have to add Swig code to programmatically show all the pages that have been created on your page. For now, just get the layouts going!</p><h3>The "Add a Page" Page</h3><p>Let's first build the page that can help us build pages. Otherwise it will be hard to build a page...err, yeah.</p><h4>Student Assignment</h4><p>To do that, we need to add a new template to our app and also a GET route that points to it. The page should look <a href="https://www.dropbox.com/s/bxjq6k1flxkxwie/Screenshot%202014-02-04%2010.09.42.png">like this</a>. Go ahead and do that now. You may want to check out <a href="http://getbootstrap.com/css/#forms">Bootstrap Forms</a>.</p><h3>Routes for a new page</h3><p>Receiving a new page submit will mean adding a new GET route and a new POST route to the app.js. The GET route is to render the add form itself, and the POST route will be to receive the submit. Let's add those two routes in the JS. </p><p>To do this, we will have to add a Add routes module. Make a new file in the routes folder using the routes/users.js file as a template. You can use the following Terminal commands:</p>
+<div class="osx_window">
+  <div class="osx-window">
+    <nav class="osx-control-window">
+      <a href="http://learn.fullstackacademy.com/#finder" class="close" style="float:none; opacity: 1" data-rel="close">close</a>
+      <a href="http://learn.fullstackacademy.com/#" class="minimize">minimize</a>
+      <a href="http://learn.fullstackacademy.com/#" class="deactivate">deactivate</a>
+    </nav>
+    <h1 class="titleInside">Terminal</h1>
+    <div class="osx-container">
+      <div class="terminal"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+</pre></td><td class="code"><pre><code><span class="line command">cp routes/users.js routes/add.js</span></code></pre></td></tr></tbody></table></div>
+    </div>
+  </div>
+</div>
+      
+<p>Let's add this routes module to our app.js page. Add this line to the top of your app.js page below the similar line for users:</p>
+<div class="code_container">
+<div><div id="highlighter_947213" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code> <code class="js plain">add_routes = require(</code><code class="js string">'./routes/add'</code><code class="js plain">);</code></div></div></td></tr></tbody></table></div></div>
+</div>
+
+<p>Now let's add the actual route. Around half way in the app.js page, you should see an <code>app.use('/users/...</code> line for the users path. Add a similar line for our add routes. Try doing it yourself first and then check the hint!</p>
+<div id="accordion-add-page-routes" class="accordion-style1 panel-group accordion-style2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-add-page-routes" href="http://learn.fullstackacademy.com/#accordion-add-page-routes-panel">
+          <i class="bigger-110 icon-angle-right" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
+          &nbsp;<b>Hint:</b> Add Page Routes 
+        </a>
+      </h3>
+    </div><div class="panel-collapse collapse" id="accordion-add-page-routes-panel" style="height: 0px;">
+      <div class="panel-body">
+        
+<div class="code_container">
+<div><div id="highlighter_545442" class="syntaxhighlighter  javascript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="javascript plain">app.use(</code><code class="javascript string">'/add'</code><code class="javascript plain">, add_routes);</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>      </p></div>
+    </div>
+  </div>
+</div><p></p><p>Once you have added the add routes module to your app.js page, we have to define the add routes module itself. Go to <code>/routes/add.js</code> and add two new routes, one GET route for <code>/add/</code> and one POST route for <code>/add/submit</code>. Try it yourself first and then check the hint.</p>
+<div id="accordion-add-route-actions" class="accordion-style1 panel-group accordion-style2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-add-route-actions" href="http://learn.fullstackacademy.com/#accordion-add-route-actions-panel">
+          <i class="bigger-110 icon-angle-right" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
+          &nbsp;<b>Hint:</b> Add Route Actions 
+        </a>
+      </h3>
+    </div><div class="panel-collapse collapse" id="accordion-add-route-actions-panel" style="height: 0px;">
+      <div class="panel-body">
+        
+<div class="code_container">
+<div><div id="highlighter_101540" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">router.get(</code><code class="js string">'/'</code><code class="js plain">, </code><code class="js keyword">function</code><code class="js plain">(req, res) {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js comments">// this is the /add/ route</code></div><div class="line number3 index2 alt2"><code class="js plain">});</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="js plain">router.post(</code><code class="js string">'/submit'</code><code class="js plain">, </code><code class="js keyword">function</code><code class="js plain">(req, res) {</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js comments">// this is the /add/submit route</code></div><div class="line number7 index6 alt2"><code class="js plain">});</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>      </p></div>
+    </div>
+  </div>
+</div><p></p><h3>Add Route Actions</h3><p>Once our routes are defined, we need to define the route actions.</p><p>Let's first do the root Add form page route first - that one should be easy! All this function should do is render the "add" view. Try writing out the "/" action in the <code>routes/add.js</code> file yourself before checking the hint below.</p>
+<div id="accordion-add-route-action" class="accordion-style1 panel-group accordion-style2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-add-route-action" href="http://learn.fullstackacademy.com/#accordion-add-route-action-panel">
+          <i class="bigger-110 icon-angle-right" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
+          &nbsp;<b>Hint:</b> Add Route Action 
+        </a>
+      </h3>
+    </div><div class="panel-collapse collapse" id="accordion-add-route-action-panel" style="height: 0px;">
+      <div class="panel-body">
+        
+<div class="code_container">
+<div><div id="highlighter_446003" class="syntaxhighlighter  javascript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="javascript plain">router.get(</code><code class="javascript string">'/'</code><code class="javascript plain">, </code><code class="javascript keyword">function</code><code class="javascript plain">(req, res) {</code></div><div class="line number2 index1 alt1"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript plain">res.render(</code><code class="javascript string">'add'</code><code class="javascript plain">);</code></div><div class="line number3 index2 alt2"><code class="javascript plain">});</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>      </p></div>
+    </div>
+  </div>
+</div><p></p><p>The code above will simply render the <code>add.html</code> template. Now if you go to <a href="http://localhost:3000/add">http://localhost:3000/add</a>, you should see your add page form! Cool.</p><h3>Double checking the form</h3><p>Make sure that your form's HTML includes an opening <code>&lt;form&gt;</code> tag that looks something like the following. The important part here is to make sure the action, <code>/add/submit</code> is consistent with your route and also the method is set to POST:</p>
+<div class="code_container">
+<div><div id="highlighter_770702" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">form</code> <code class="xml color1">action</code><code class="xml plain">=</code><code class="xml string">'/add/submit'</code> <code class="xml color1">method</code><code class="xml plain">=</code><code class="xml string">'post'</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">form</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+</div>
+
+<p>Once our form is setup correctly, we can start to work on the POST route action that will catch the form submit.</p><h4>The POST Action</h4><p>Let's start our POST route with this skeleton (remember, this is to be added to /routes/add.js):</p>
+<div class="code_container">
+<div><div id="highlighter_959501" class="syntaxhighlighter  javascript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="javascript plain">router.post(</code><code class="javascript string">'/submit'</code><code class="javascript plain">, </code><code class="javascript keyword">function</code><code class="javascript plain">(req, res) {</code></div><div class="line number2 index1 alt1"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript keyword">var</code> <code class="javascript plain">models = require(</code><code class="javascript string">'../models/'</code><code class="javascript plain">);</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript comments">// STUDENT ASSIGNMENT:</code></div><div class="line number5 index4 alt2"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript comments">// add definitions of the `title`, `body` and `url_name` variables here</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript keyword">var</code> <code class="javascript plain">p = </code><code class="javascript keyword">new</code> <code class="javascript plain">models.Page({ </code><code class="javascript string">"title"</code><code class="javascript plain">: title, </code><code class="javascript string">"body"</code><code class="javascript plain">:body, </code><code class="javascript string">"url_name"</code><code class="javascript plain">: url_name});</code></div><div class="line number8 index7 alt1"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript plain">p.save();</code></div><div class="line number9 index8 alt2"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript plain">res.redirect(</code><code class="javascript string">'/'</code><code class="javascript plain">);</code></div><div class="line number10 index9 alt1"><code class="javascript plain">});</code></div></div></td></tr></tbody></table></div></div>
+</div>
+
+<p>In the code snippet above, add definitions to the <code>title</code>, <code>body</code> and <code>url_name</code> variables and then add the code above to your <code>add.js</code> routes file.</p><div class="bs-callout bs-callout-info"><p>By the <code>url_name</code> value, we mean a version of the "title" that has no non-alphanumeric characters and uses underscore instead of space. To get the url_name, you will need to transform the name using regexes and the String.replace function of JavaScript. This will be used in the urls of the pages, e.g. a page titled "Page About My Family" would have the url: <a href="http://localhost:3000/Page_About_My_Family">http://localhost:3000/Page_About_My_Family</a><br><br>In case there is no title, or the title is empty, you can use a randomly generated string. We have done it for you in the HINT below. Don't look there if you want to try it yourself first!</p></div>
+<div id="accordion-solution-for-url_name-generator" class="accordion-style1 panel-group accordion-style2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-solution-for-url_name-generator" href="http://learn.fullstackacademy.com/#accordion-solution-for-url_name-generator-panel">
+          <i class="bigger-110 icon-angle-right" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
+          &nbsp;<b>Hint:</b> Solution for URL_NAME Generator 
+        </a>
+      </h3>
+    </div><div class="panel-collapse collapse" id="accordion-solution-for-url_name-generator-panel" style="height: 0px;">
+      <div class="panel-body">
+        
+<div class="code_container">
+<div><div id="highlighter_937561" class="syntaxhighlighter  javascript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="javascript keyword">var</code> <code class="javascript plain">generateUrlName = </code><code class="javascript keyword">function</code><code class="javascript plain">(name) {</code></div><div class="line number2 index1 alt1"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript keyword">if</code> <code class="javascript plain">(</code><code class="javascript keyword">typeof</code> <code class="javascript plain">name != </code><code class="javascript string">"undefined"</code> <code class="javascript plain">&amp;&amp; name !== </code><code class="javascript string">""</code><code class="javascript plain">) {</code></div><div class="line number3 index2 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript comments">// Removes all non-alphanumeric characters from name</code></div><div class="line number4 index3 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript comments">// And make spaces underscore</code></div><div class="line number5 index4 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript keyword">return</code> <code class="javascript plain">name.replace(/[\s]/ig,</code><code class="javascript string">"_"</code><code class="javascript plain">).replace(/[^\w]/ig,</code><code class="javascript string">""</code><code class="javascript plain">);</code></div><div class="line number6 index5 alt1"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript plain">} </code><code class="javascript keyword">else</code> <code class="javascript plain">{</code></div><div class="line number7 index6 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript comments">// Generates random 5 letter string</code></div><div class="line number8 index7 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript keyword">return</code> <code class="javascript plain">Math.random().toString(36).substring(2,7);</code></div><div class="line number9 index8 alt2"><code class="javascript spaces">&nbsp;&nbsp;</code><code class="javascript plain">}</code></div><div class="line number10 index9 alt1"><code class="javascript plain">};</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="javascript keyword">var</code> <code class="javascript plain">url_name = generateUrlName(title);</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>      </p></div>
+    </div>
+  </div>
+</div><p></p><p>A great way to test if the POST action is working on this form is to check the pages you make through your form in the <code>mongo</code> shell. Try submitting a new page first, and then try the steps below. Note the commands to type in the terminal are in WHITE:</p>
+<div class="osx_window">
+  <div class="osx-window">
+    <nav class="osx-control-window">
+      <a href="http://learn.fullstackacademy.com/#finder" class="close" style="float:none; opacity: 1" data-rel="close">close</a>
+      <a href="http://learn.fullstackacademy.com/#" class="minimize">minimize</a>
+      <a href="http://learn.fullstackacademy.com/#" class="deactivate">deactivate</a>
+    </nav>
+    <h1 class="titleInside">Terminal</h1>
+    <div class="osx-container">
+      <div class="terminal"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">$</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+<span class="line-number">&nbsp;</span>
+</pre></td><td class="code"><pre><code><span class="line command">mongo</span><span class="line output">MongoDB shell version: 2.4.9</span><span class="line output">connecting to: test</span><span class="line output"><br></span><span class="line output"><span style="color:#FFD700">Now let's check the databases we have and change to the one we want.</span></span><span class="line output"><br></span><span class="line command">show databases</span><span class="line output">local    0.078125GB</span><span class="line output">wikistack    0.203125GB</span><span class="line output"><br></span><span class="line output"><span style="color:#FFD700">Do you see the wikistack db? If not, make sure your form is submitting properly and that your Mongoose DB connection is setup properly. Now let's change to working on the wikistack db.</span></span><span class="line output"><br></span><span class="line command">use wikistack</span><span class="line output">switched to db wikistack</span><span class="line output"><br></span><span class="line output"><span style="color:#FFD700">Now let's see the collections we have</span></span><span class="line output"><br></span><span class="line command">show collections</span><span class="line output">pages</span><span class="line output">system.indexes</span><span class="line output"><br></span><span class="line output"><span style="color:#FFD700">Now let's see what's in the <em>pages</em> collection</span></span><span class="line output"><br></span><span class="line command">db.pages.find()</span><span class="line output">{ "title" : "My Favorite Teas", "body" : "Green Tea\r\nBlack Tea", "url_name" : "My_Favorite_Teas", "_id" : ObjectId("52f10ddda01b6f8195ef3ca7"), "date" : ISODate("2014-02-04T15:57:17.110Z"), "__v" : 0 }</span><span class="line output"><br></span><span class="line output"><span style="color:#FFD700">If you don't see anything come up after db.pages.find(), something is wrong in your add page process!</span></span><span class="line output"><br></span></code></pre></td></tr></tbody></table></div>
+    </div>
+  </div>
+</div>
+      
+</div>
+        <div class="row button-row">
+          <div class="col-xs-12">
+            <a id="next-action" href="http://learn.fullstackacademy.com/#/course_sessions/82/concepts/291">
+              <button class="btn btn-lg btn-success ng-binding">
+                I'm Done, Next Concept <i class="fa fa-arrow-right"></i>
+              </button>
+            </a>
+            <!-- ngIf: user.isAdmin() -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</ui-view></ui-view></ui-view></div>
+</div><!-- Google Analytics: change UA-XXXXX-X to be your site's ID --><script async="" src="./about_us_files/analytics.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');</script><!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]--><script src="./about_us_files/b104b2a1.vendor.js"></script><script src="./about_us_files/bb9de833.scripts.js"></script></body></html>

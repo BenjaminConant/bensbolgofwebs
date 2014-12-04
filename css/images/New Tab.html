@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/dashboard.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New Tab</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/css/normalize.css">
+        <link rel="stylesheet" href="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/css/style.css">
+    </head>
+    <body style="zoom: 1;">
+
+        <div class="background-overlay fadein"></div>
+        <ul id="background"><li class="fadein" style="background-image: url(chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/backgrounds/28.jpg);"></li></ul>
+
+        <div class="widgets fadein">
+            <div id="full"></div>
+            <div id="top-left"><div id="app-return" class="top-widget" style="opacity: 1;"><a href="" class="top-nav">Apps</a></div><div id="search" class="search top-widget" style="opacity: 1;"><form class="form"><i class="icon-search"></i><input type="text" id="search-input" class="search-input" autocomplete="off"></form><iframe src="" class="search-results"></iframe></div></div>
+            <div id="top-right"><div id="todo-complete" class="metric" style="opacity: 1; display: none;">
+            <span class="metric-stat">0</span>
+            <span class="metric-label">todos complete</span>
+        </div><div id="weather" class="metric" style="opacity: 1;">
+            <div class="metric-stat">
+                <span class="icon" data-icon="C" title="Fair"></span>44°<span class="unit hide">f</span>
+            </div>
+            <span class="location metric-label data">New York</span>
+        </div></div>
+            <div id="center-above"></div>
+            <div id="center"><div id="centerclock" style="opacity: 1;">
+            <h1 class="time">18:01</h1>
+            <span class="format">AM</span>
+        </div><div id="greeting" style="opacity: 1;">
+          <h2>Good <span class="period">evening</span>, <span class="name">Benjamin</span>.</h2>
+        </div></div>
+            <div id="center-below"><div id="focuses" style="opacity: 1;"><div class="prompt" style="opacity: 1; display: block;">
+            <h3>What is your main focus for today?</h3>
+            <input type="text">
+        </div>
+            <ol></ol>
+        </div></div>
+            <div id="bottom"><blockquote id="shortquote" style="opacity: 1;">
+            <p class="light body">“A goal without a plan is only a wish.”</p>
+            <p class="light source">Unknown</p>
+        </blockquote></div>
+            <div id="bottom-right"><div id="todo" class="show" style="opacity: 1;">
+            <div class="pane todo-pane todo-list">
+                <div class="todo-list-header">
+                    <div id="todo-count">5 things to do</div>
+                </div>
+                <ol>
+                <li draggable="true">
+            <div class="view">
+                <a class="destroy">✕</a>
+                <label><input class="toggle" type="checkbox"></label><span>put away cloths </span>
+            </div>
+            <input class="edit todo-input" type="text" value="put away cloths ">
+        </li><li draggable="true">
+            <div class="view">
+                <a class="destroy">✕</a>
+                <label><input class="toggle" type="checkbox"></label><span>tak out rts</span>
+            </div>
+            <input class="edit todo-input" type="text" value="tak out rts">
+        </li><li draggable="true">
+            <div class="view">
+                <a class="destroy">✕</a>
+                <label><input class="toggle" type="checkbox"></label><span>wash dshs</span>
+            </div>
+            <input class="edit todo-input" type="text" value="wash dshs">
+        </li><li draggable="true">
+            <div class="view">
+                <a class="destroy">✕</a>
+                <label><input class="toggle" type="checkbox"></label><span>lands</span>
+            </div>
+            <input class="edit todo-input" type="text" value="lands">
+        </li><li draggable="true">
+            <div class="view">
+                <a class="destroy">✕</a>
+                <label><input class="toggle" type="checkbox"></label><span>y</span>
+            </div>
+            <input class="edit todo-input" type="text" value="y">
+        </li></ol>
+                <input id="todo-new" class="todo-input" type="text" placeholder="New todo">
+            </div>
+            <span id="todo-remaining"></span>
+            <!--<a href="" id="clear-completed">archive done</a>-->
+            <span class="toggle todo-toggle" href="">Todo
+        </span><li class="placeholder" style="display: none;"></li></div></div>
+            <div id="bottom-left"><div id="preferences" style="opacity: 1;">
+            <div class="pane preferences-pane light"><ul id="preferences-list" class="content light"><li class="user loggedin"><img class="avatar" src="./New Tab_files/9b83e83ca0d43d70935ba8c7d66aab84">Benjamin</li>
+            <ul>
+                
+                <li>
+                    <a id="preferences-customize" href="" target="">Customize</a>
+                </li>
+                
+                <li>
+                    <a id="preferences-about" href="" target="">About</a>
+                </li>
+                
+                <li>
+                    <a id="preferences-help" href="http://momentumdash.com/help" target="_blank">Help</a>
+                </li>
+                
+                <li>
+                    <a id="preferences-logout" href="" target="">Logout</a>
+                </li>
+                
+            </ul>
+        </ul></div>
+            <i class="icon-cog toggle"></i>
+        </div><div id="background-info" class="light" style="opacity: 1;">
+            <span class="title">Grand Canyon, Arizona, USA</span>
+            
+                <span class="source">
+                    <a href="https://www.flickr.com/photos/stevedunleavy/5192342061/" target="_blank" class="source-url">Photo by Steve Dunleavy</a>
+                </span>
+            
+       </div></div>
+        </div>
+
+        <!-- Handlesbars Templates (Move to external files) -->
+
+        <script async="" src="./New Tab_files/analytics.js"></script><script id="preferences-template" type="text/x-handlebars-template">
+            <div class="pane preferences-pane light"></div>
+            <i class="icon-cog toggle"></i>
+        </script>
+
+        <script id="preferences-list-template" type="text/x-handlebars-template">
+            <ul>
+                {{#each preferences}}
+                <li>
+                    <a id="{{id}}" href="{{href}}" target="{{target}}">{{name}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </script>
+
+        <script id="preferences-about-template" type="text/x-handlebars-template">
+            <a id="preferences-back" class="back" href=""><i class="icon-left-open"></i></a>
+            <p><img src="img/logo-white.png" class="logo"></p>
+            <h1>Momentum</h1>
+            <p class="made">Personal Dashboard <span class="quiet">v0.34</span></p>
+            <p class="content">Thank you for your support!</p>
+            <p class="links">
+                <a href="http://momentumdash.com/help" target="_blank">Feedback</a>
+                <a href="http://momentumdash.com/community" target="_blank">Community</a>
+                <a href="http://momentumdash.com/blog" target="_blank">Blog</a>
+                <a href="https://www.facebook.com/momentumdash" target="_blank">Facebook</a>
+                <a href="https://twitter.com/momentumdash" target="_blank">Twitter</a></p>
+            <p class="made">
+                <a href="http://momentumdash.com" target="_blank">momentumdash.com</a> &nbsp;&nbsp; Made with &#9829; in BC
+            </p>
+        </script>
+
+        <script id="preferences-customize-template" type="text/x-handlebars-template">
+            <a id="preferences-back" class="back" href=""><i class="icon-left-open"></i></a>
+
+            <div class="header">
+                <h1 class="medium">Customize</h1>
+            </div>
+            <div class="body">
+                <ul>
+                    {{#each customizeItems}}
+                    <li class="slide-toggle {{class}}" data-related-widget="{{widget}}">
+                        <input type="checkbox"></input>
+                        <span>{{name}}</span>
+                        <span class="toggle-slider">
+                            <span class="toggle-switch"></span>
+                        </span>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+        </script>
+
+        <script id="message-template" type="text/x-handlebars-template">
+            <h4>{{{title}}}</h4>
+            <p>
+                <span class="message">{{{message}}}</span>
+            </p>
+            <a href="" class="hide"><span>✕</span></a>
+        </script>
+
+        <script id="weather-template" type="text/x-handlebars-template">
+            <div class="metric-stat">
+                <span class="icon" data-icon="{{code}}" title="{{condition}}"></span>{{temperature}}&deg;<span class="unit {{unitClass}}">{{unit}}</span>
+            </div>
+            <span class="location metric-label data">{{location}}</span>
+        </script>
+
+        <script id="todo-template" type="text/x-handlebars-template">
+            <div class="pane todo-pane todo-list">
+                <div class="todo-list-header">
+                    <div id="todo-count"></div>
+                </div>
+                <ol>
+                </ol>
+                <input id="todo-new" class="todo-input" type="text" placeholder="New todo">
+            </div>
+            <span id="todo-remaining"></span>
+            <!--<a href="" id="clear-completed">archive done</a>-->
+            <span class="toggle todo-toggle" href="">Todo</a>
+        </script>
+
+        <script id="todo-item-template" type="text/x-handlebars-template">
+            <div class="view">
+                <a class="destroy">✕</a>
+                <label><input class="toggle" type="checkbox" {{checked}}></label><span>{{title}}</span>
+            </div>
+            <input class="edit todo-input" type="text" value="{{title}}">
+        </script>
+
+        <script id="todo-complete-template" type="text/x-handlebars-template">
+            <span class="metric-stat">{{done}}</span>
+            <span class="metric-label">{{item}} complete</span>
+        </script>
+
+        <script id="focuses-template" type="text/x-handlebars-template">
+            <ol></ol>
+        </script>
+
+        <script id="focus-prompt-template" type="text/x-handlebars-template">
+            <h3>What is your main focus for today?</h3>
+            <input type="text">
+        </script>
+
+        <script id="focus-template" type="text/x-handlebars-template">
+            <h3>{{day}}</h3>
+            <p class="todays-focus">{{focus}}<span class="delete">✕</span></p>
+        </script>
+
+        <script id="background-template" type="text/x-handlebars-template">
+            <li style="background-image: url('backgrounds/{{filename}}')"></li>
+        </script>
+
+        <script id="background-info-template" type="text/x-handlebars-template">
+            <span class="title">{{{title}}}</span>
+            {{#if sourceUrl}}
+                <span class="source">
+                    <a href="{{sourceUrl}}" target="_blank" class="source-url">Photo by {{{source}}}</a>
+                </span>
+            {{else}}
+                <span class="source">Photo by {{source}}</span>
+            {{/if}}
+       </script>
+
+        <script id="centerclock-template" type="text/x-handlebars-template">
+            <h1 class="time">{{time}}</h1>
+            <span class="format">AM</span>
+        </script>
+
+        <script id="greeting-template" type="text/x-handlebars-template">
+          <h2>Good <span class="period">{{period}}</span>, <span class="name">{{name}}</span>.</h2>
+        </script>
+
+        <script id="shortquote-template" type="text/x-handlebars-template">
+            <p class="light body">&ldquo;{{body}}&rdquo;</p>
+            {{#if source}}<p class="light source">{{source}}</p>{{/if}}
+        </script>
+
+        <script id="introduction-template" type="text/x-handlebars-template">
+            <p class="logo"><img src="img/logo-white.png"></p>
+            <p class=content></p>
+        </script>
+
+        <script id="introduction-content-template" type="text/x-handlebars-template">
+            <div class="prompt">
+                {{message}}
+                <input id="introduction-input" type="text">
+                <div class="tip"></div>
+            </div>
+            <div class="buttons"></div>
+
+        </script>
+
+        <script id="introduction-tip-template" type="text/x-handlebars-template">
+            <div>{{value}}</div>
+        </script>
+
+        <script id="introduction-button-template" type="text/x-handlebars-template">
+            <button>{{value}}</button>
+        </script>
+
+        <!-- Libraries -->
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/js/jquery.min.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/js/underscore-min.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/js/backbone-min.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/js/backbone.localStorage-min.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/js/handlebars.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/js/raven.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/js/util.js"></script>
+
+        <!-- App -->
+        <!-- These two go first -->
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/app.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/globals.js"></script>
+        <!-- Widgets -->
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/background.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/quote.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/focus.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/todo.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/weather.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/message.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/gravatar.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/preferences.js"></script>
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/introduction.js"></script>
+        <!-- This goes last -->
+        <script src="chrome-extension://laookkfknpbbblfpciffpaejjkokdgca/app/main.js"></script>
+
+    
+
+</body></html>

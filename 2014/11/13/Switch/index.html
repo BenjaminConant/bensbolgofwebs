@@ -15,6 +15,7 @@
 <meta property="og:image" content="http://s27.postimg.org/ox10534gh/clean_atom.png">
 <meta property="og:image" content="http://s12.postimg.org/4ubdqpbl9/Screen_Shot_2014_12_04_at_3_51_49_PM.png">
 <meta property="og:image" content="http://s28.postimg.org/nw4xy3t25/Screen_Shot_2014_12_04_at_4_00_32_PM.png">
+<meta property="og:image" content="http://s12.postimg.org/g663wsukt/Screen_Shot_2014_12_05_at_9_30_52_AM.png">
 <meta property="og:image" content="http://s28.postimg.org/7u2x4kyu5/Screen_Shot_2014_12_04_at_5_08_12_PM.png">
 <meta property="og:image" content="http://s28.postimg.org/wbv0sh1el/Screen_Shot_2014_12_04_at_5_07_59_PM.png">
 <meta property="og:image" content="http://s14.postimg.org/7c7o7m835/Screen_Shot_2014_12_04_at_6_27_02_PM.png">
@@ -92,31 +93,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Atom is a hot new open source text editor from Github that is completely free to use and modify. It is supported by a vibrant and growing community of developers who are (for the most part) unified by their disdain of the Sublime Text onXSaves() pop up window that looks something like this.</p>
+        <p>Atom is a hot new open source text editor from Github that is completely free to use and modify. It is supported by a vibrant and growing community of developers who are (for the most part) unified by their disdain of Sublime Text’s onXSaves() pop up window that looks something like this.</p>
 <p><img src="http://4.bp.blogspot.com/-ojAE-UaQv3w/UqDG5vAmeOI/AAAAAAAABYI/mB7le-ughNs/s1600/Screen+Shot+2013-12-05+at+11.29.21+AM.png" s=""></p>
-<p>I have decided to move my text editing operations over to Atom in the hope of siding with the <a href="http://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar" target="_blank" rel="external">bazaar over the cathedral</a> whenever possible. In this post I will outline a few steps that should help you make your switch from Sublime Text to Atom as minimally painful and maximally awesome as possible. Enjoy!</p>
+<p>I have decided to move my text editing operations over to Atom in the hope of siding with the <a href="http://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar" target="_blank" rel="external">bazaar over the cathedral</a> whenever possible. In this post, I will outline a few steps that should help make your switch from Sublime Text to Atom as minimally painful and maximally awesome as possible. Enjoy!</p>
 <p>Step 1 - <a href="https://atom.io/" target="_blank" rel="external">Download</a>, Install, &amp; Open Atom</p>
-<p>Follow the link above and download Atom. Once you unzip the file drag the Atom app to your applications folder. Then, open Atom either by clicking on the Atom app icon in your applications folder or by typing <code>atom &lt;filename&gt;</code>    from command line. Atom automatically installs this command line shortcut! When you open your Atom, it should look somthing like this…</p>
+<p>Follow the link above and download Atom. Once you unzip the file, drag the Atom app to your applications folder. Then, open Atom either by clicking on the Atom app icon in your applications folder or by typing <code>atom &lt;filename&gt;</code>    from command line. Atom automatically installs this command line shortcut! When you open your Atom, it should look somthing like this…</p>
 <p><img src="http://s27.postimg.org/ox10534gh/clean_atom.png"></p>
 <p>Step 2 - Make Atom Look Cool</p>
 <p>My first reaction to Atom was that it looks and behaves sort of like an annoyingly worse Sublime Text. To start fixing this hit <code>cmd-,</code> to open Atom’s settings window. On the top of the settings window’s left column click on themes. Here you will see that your visual experience with Atom is determined by the UI and Syntax theme you are running. Your screen should now look something like this…</p>
 <p><img src="http://s12.postimg.org/4ubdqpbl9/Screen_Shot_2014_12_04_at_3_51_49_PM.png"></p>
-<p>As stated, the defaults are not so great so let’s go ahead and download Seti’s UI and syntax themes which frankly put Sublime Text defaults to shame. To download and install these themes type in Seti Ui to the install themes search bar and then click the blue install button. Once installed you will have access to Seti as an option in your UI Theme dropdown menu at the top of the page. You will notice the changes immediately as suddenly your files will be accompanied with helpful icons that tell you what type of code is inside them. Repeat this process for the Seti Syntax Theme by searching for Seti Syntax, installing, and then selecting from your syntax theme dropdown. At this point your editor should look something like this.</p>
+<p>As stated the defaults are not so great, so let’s go ahead and download Seti’s UI and syntax themes which frankly put Sublime Text’s defaults to shame. To download and install these themes type Seti Ui into the “Search themes” search bar and then click the blue install button once Seti Ui populates. As soon as Seti Ui completes installation, you will have access to it as an option in your UI Theme dropdown menu. Select Seti UI from the UI Theme dropdown menu and watch as your files are immediately accompanied with helpful icons that tell you what type of code is inside them. Repeat this process for the Seti Syntax Theme by searching for Seti Syntax, installing, and then selecting from your Syntax Theme dropdown menue. At this point your editor (with some code written into it) should look something like this.</p>
 <p><img src="http://s28.postimg.org/nw4xy3t25/Screen_Shot_2014_12_04_at_4_00_32_PM.png"></p>
 <p>Step 3 - Fix the Lack of Pane Resizability &amp; Autocomplete … also get rid of the semi-random vertical line in the middle of the screen.</p>
-<p>One of my favorite features of Sublime Text, the ability to resize the panes you are working on, is not included by default in Atom. This was about to be a deal breaker but after some research I discovered a nifty package called <a href="https://atom.io/packages/resize-panes" target="_blank" rel="external">Resize Panes</a>  which solves this problem (sort of). Download and install Resize Panes by clicking on the packages option on the top of the left column in the settings window searching for Resize Panes and clicking the blue install button. Once installed you should be able to resize your active pane using the <code>cmd-option--</code> and <code>cmd-option-+</code> keys.</p>
-<p>Also not included in the default Atom installation is an autocomplete feature. Autocomplete is the best so let’s include it in our Atom by going to settings and searching for and then installing the <a href="https://atom.io/packages/autocomplete-plus" target="_blank" rel="external">autocomplete plus</a> package. Now you will have autocomplete just like in Sublime Text but with one annoying difference. To select an item form the autocomplete dropdown menu you will by default need use <code>tab</code> instead of <code>enter</code>. To save yourself, and anyone trying to use your editor, from a useless and infuriating learning curve, you can change the keybindings in your installation of the auto complete plus package. To achieve this, open up settings and search for your autocomplete plus in the search bar on the bottom of the left hand column of the screen. Then, open auto complete plus and navigate to keymaps &gt; autocomplete-plus.cson. Modify and then then change the word ‘tab’ to the word ‘enter’ on line two of this file. Here is a before and after of the code you need to modify.</p>
+<p>One of my favorite features of Sublime Text, the ability to resize the panes you are working on, is not included by default in Atom. This was about to be a deal breaker, and there is even a <a href="https://discuss.atom.io/t/handle-splitting-panes-more-like-sublime/2157/2" target="_blank" rel="external">fully fledged group gripe about the lack of this feature on the Atom community boards</a>, but after some research I discovered a nifty package called <a href="https://atom.io/packages/resize-panes" target="_blank" rel="external">Resize Panes</a>  which solves this problem. Download and install Resize Panes by clicking on the packages option on the top of the left column in the settings window, searching for Resize Panes, and clicking the blue install button. Once installed you should be able to resize your active pane using the <code>cmd-option--</code> and <code>cmd-option-+</code> keys.</p>
+<p>Also not included in the default Atom installation is an autocomplete feature. Autocomplete is a must, so let’s include it in our Atom by going to settings and searching for and then installing the <a href="https://atom.io/packages/autocomplete-plus" target="_blank" rel="external">Autocomplete Plus</a> package. Now you will have autocomplete just like in Sublime Text but with one annoying difference — to select an item from the autocomplete dropdown menu you will by default need use <code>tab</code> instead of <code>enter</code>. To save yourself, and anyone trying to use your editor, from a useless and infuriating learning curve, you can change the keybindings in your installation of Autocomplete Plus. To achieve this, open up settings and search for your Autocomplete Plus in the search bar on the bottom of the left hand column of the screen. Your screen should look like this.</p>
+<p><img src="http://s12.postimg.org/g663wsukt/Screen_Shot_2014_12_05_at_9_30_52_AM.png"></p>
+<p>Then, click the “Open in Atom” button on the right hand side of the Autocomplete Plus menu buttons. This will open the Autocomplete Plus code in a new Atom window and allow you to make whatever edits you like. Once inside the Autocomplete Plus code, navigate to <code>keymaps &gt; autocomplete-plus.cson</code> and change line two from <code>&#39;tab&#39;: &#39;autocomplete-plus:confirm&#39;</code> to <code>&#39;enter&#39;: &#39;autocomplete-plus:confirm&#39;</code> and hit save. Here is a before and after of the code you need to modify.</p>
 <p>before<br><img src="http://s28.postimg.org/7u2x4kyu5/Screen_Shot_2014_12_04_at_5_08_12_PM.png"></p>
 <p>after<br><img src="http://s28.postimg.org/wbv0sh1el/Screen_Shot_2014_12_04_at_5_07_59_PM.png"></p>
 <p>When you are finished, save and then restart Atom. You should now have a autocomplete feature that feels exactly like Sublime Text’s!</p>
-<p>Our last task is to get rid of the default vertical line in the middle of the screen. To achieve this we go to settings, open the pre installed package called word wrapper and disable it. Look below for a before and after.</p>
+<p>Our last task is to get rid of the default vertical line in the middle of the screen. To achieve this go to settings, open the pre-installed package called word wrapper, and disable it. Scroll down for a before and after.</p>
 <p>before<br><img src="http://s14.postimg.org/7c7o7m835/Screen_Shot_2014_12_04_at_6_27_02_PM.png"></p>
 <p>after<br><img src="http://s14.postimg.org/58x8zy8a9/Screen_Shot_2014_12_04_at_6_27_11_PM.png"></p>
-<p>Now you are done! Your Atom is pretty close to Sublime Text but with a really cool user interface and the potential for extention greatness.</p>
+<p>Now you are done! Your Atom is pretty close to Sublime Text but with a really cool user interface and the potential for extension greatness.</p>
 <p>Step  4 - Explore</p>
-<p>There are million zillion ways you might want to use your text editor. You now have the Atom know how to search for and hopefully find a package or theme that will help you achieve your optimization goals.</p>
+<p>There are million zillion ways you might want to use your text editor. You now have the Atom know-how to search for, install, and modify, a package or theme that will help you achieve your optimization goals.</p>
 <p>Step  5 - Bonus Step</p>
-<p>Remember how at the beginning of this post I said that the Atom community is <em>“(for the most part) unified by their disdain of the SublimeText onXSaves()”</em> pop up window. Well, a dissenting citizen of Atom has created a package called <a href="https://github.com/thiagopnts/unregistered" target="_blank" rel="external">unregistered</a> that will allow you to enable this ¿¿feature?? in your Atom. Check it out here!</p>
+<p>Remember how at the beginning of this post I said that the Atom community is <em>“(for the most part) unified by their disdain of SublimeText’s onXSaves()”</em> pop up window. Well, a dissenting citizen of Atom has created a package called <a href="https://github.com/thiagopnts/unregistered" target="_blank" rel="external">unregistered</a> that will allow you to enable this ¿feature? in your Atom. Check it out here!</p>
 <p><img src="https://camo.githubusercontent.com/dc37a518a73360c0be4b85458b3dfdf901ae26d7/687474703a2f2f692e696d6775722e636f6d2f67564d684f6f4f2e706e67"></p>
 
       
@@ -131,7 +134,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/11/16/Why-Development/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/12/05/Why-Development/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -168,7 +171,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -180,7 +183,7 @@
       <ul>
         
           <li>
-            <a href="/2014/11/16/Why-Development/">Hello internet user!</a>
+            <a href="/2014/12/05/Why-Development/">Hello internet user!</a>
           </li>
         
           <li>
